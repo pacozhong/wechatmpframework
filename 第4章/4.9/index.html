@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>微信公众平台开发与实践测试样例</title>  
+  <link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
+  
+  <!-- Extra Codiqa features -->
+  <link rel="stylesheet" href="codiqa.ext.css">
+  
+  <!-- jQuery and jQuery Mobile -->
+  <script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
+  <script src="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
+  <!-- Extra Codiqa features -->
+  <script src="https://d10ajoocuyu32n.cloudfront.net/codiqa.ext.js"></script>
+  <script>
+      function hideRightTopMenu(){        	
+      		WeixinJSBridge.call('hideOptionMenu');  //隐藏右上角
+      }
+    
+      function showRightTopMenu(){        	
+      		WeixinJSBridge.call('showOptionMenu');  //显示右上角
+      }
+    	
+      function hidenToolBar(){
+            WeixinJSBridge.call('hideToolbar');  //隐藏工具栏
+      }
+    
+      function showToolBar(){
+            WeixinJSBridge.call('showToolbar');  //显示工具栏
+      }
+    	
+      function jubdgeNewEnv(){
+      	 WeixinJSBridge.invoke('getNetworkType',{},   //判断net env
+				function(e){
+	    			WeixinJSBridge.log(e.err_msg);
+                    alert(e.err_msg.split(":")[1]);
+	    		}
+        );
+      }
+    
+
+  </script>
+
+</head>
+<body>
+  <div data-role="page" id="page1">
+    <div data-role="content">
+ 		 <ul data-role="listview" data-divider-theme="b" data-inset="true">
+      		  <li data-theme="d"><a href="javascript:void(0);" onclick="hideRightTopMenu();">隐藏右上角菜单</a></li>
+      	 </ul>	
+      	 <ul data-role="listview" data-divider-theme="b" data-inset="true">
+           	  <li data-theme="d"><a href="javascript:void(0);" onclick="showRightTopMenu();">显示右上角菜单</a></li>
+      	 </ul>
+  		 <ul data-role="listview" data-divider-theme="b" data-inset="true">
+           	  <li data-theme="d"><a href="javascript:void(0);" onclick="hidenToolBar();">隐藏工具栏</a></li>
+      	 </ul>
+  		 <ul data-role="listview" data-divider-theme="b" data-inset="true">
+           	  <li data-theme="d"><a href="javascript:void(0);" onclick="showToolBar();">显示工具栏</a></li>
+      	 </ul>
+  		 <ul data-role="listview" data-divider-theme="b" data-inset="true">
+           	  <li data-theme="d"><a href="javascript:void(0);" onclick="jubdgeNewEnv();">查看当前网络情况</a></li>
+      	 </ul>
+    </div>
+  </div>
+</body>
+</html>
